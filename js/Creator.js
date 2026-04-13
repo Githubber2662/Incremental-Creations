@@ -62,7 +62,7 @@ class Creator {
 			let classes = data.classes ? (data.classes.length>1 ? data.classes.reduce((a,b) => a+" "+b) : (data.classes[0]||"")) : ""
 			this.html += "<button id='buttons"+id+"' class='"+classes+"' style='position: absolute; top: "+(data.top||0)+"px; left: "+(data.left||0)+"px' onclick='"+data.event+"()'>"+(data.text||"")+"</button>"
 		}
-		this.html += "<script type='text/javascript' src='https://raw.githack.com/Naruyoko/OmegaNum.js/master/OmegaNum.js'></script> <script type='text/javascript' src='game.js'></script></body>"
+		this.html += "<script type='text/javascript' src='https://github.com/Githubber2662/Incremental-Creations/blob/master/js/ExpantaNum.js'></script> <script type='text/javascript' src='game.js'></script></body>"
 	}
 
 	updateCSS() {
@@ -86,12 +86,12 @@ class Creator {
 		for (let i=0;i<Object.keys(this.numbers).length;i++) {
 			let numID = Object.keys(this.numbers)[i]
 			let numData = Object.values(this.numbers)[i]
-			this.js += "\tif (Object.keys(saveData).includes('"+numID+"')) player['"+numID+"'] = new OmegaNum(saveData['"+numID+"']);\n" 
-			this.js += "\telse player['"+numID+"'] = new OmegaNum("+numData.start+");\n"
+			this.js += "\tif (Object.keys(saveData).includes('"+numID+"')) player['"+numID+"'] = new ExpantaNum(saveData['"+numID+"']);\n" 
+			this.js += "\telse player['"+numID+"'] = new ExpantaNum("+numData.start+");\n"
 		}
 		this.js += "};\n"
-		this.js += "OmegaNum.prototype.toSWDP = function(digits) {\n"
-		this.js += "\treturn new OmegaNum(this).times(OmegaNum.pow(10, digits)).round().div(OmegaNum.pow(10, digits));\n"
+		this.js += "ExpantaNum.prototype.toSWDP = function(digits) {\n"
+		this.js += "\treturn new ExpantaNum(this).times(ExpantaNum.pow(10, digits)).round().div(ExpantaNum.pow(10, digits));\n"
 		this.js += "}\n"
 		for (let i=0;i<Object.keys(this.events).length;i++) {
 			let eventID = Object.keys(this.events)[i]
